@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from pulse_cli import __version__
-from pulse_cli.core import hash_file, ping, summarize_json
+from pulse_cli.core import hash_file, summarize_json
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -19,9 +19,6 @@ def build_parser() -> argparse.ArgumentParser:
 
     s = sub.add_parser("json", help="Resumo de um JSON")
     s.add_argument("path")
-
-    p = sub.add_parser("ping", help="HEAD/GET simples em uma URL")
-    p.add_argument("url")
     return parser
 
 
@@ -30,10 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "hash":
         print(hash_file(Path(args.path)))
         return 0
-    if args.cmd == "json":
-        print(json.dumps(summarize_json(Path(args.path)), indent=2))
-        return 0
-    print(json.dumps(ping(args.url)))
+    print(json.dumps(summarize_json(Path(args.path)), indent=2))
     return 0
 
 

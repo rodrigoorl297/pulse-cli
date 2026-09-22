@@ -3,7 +3,6 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
-from urllib.request import urlopen
 
 
 def hash_file(path: Path, algo: str = "sha256") -> str:
@@ -21,8 +20,3 @@ def summarize_json(path: Path) -> dict:
     if isinstance(data, dict):
         return {"type": "object", "keys": sorted(data.keys())}
     return {"type": type(data).__name__}
-
-
-def ping(url: str, timeout: float = 5.0) -> dict:
-    with urlopen(url, timeout=timeout) as response:
-        return {"status": response.status, "url": url, "ctype": response.headers.get("Content-Type")}

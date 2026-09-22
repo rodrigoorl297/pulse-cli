@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pulse-cli"
 version = "1.0.0"
-description = "CLI profissional para inspecao de arquivos, hashes e HTTP."
+description = "CLI para hash SHA-256 e resumo de JSON."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
